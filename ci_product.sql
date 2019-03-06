@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 06, 2019 at 10:10 AM
+-- Generation Time: Mar 06, 2019 at 11:52 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -91,6 +91,7 @@ CREATE TABLE `order_product` (
 
 CREATE TABLE `product` (
   `id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` longtext NOT NULL,
   `price` decimal(10,2) NOT NULL,
@@ -104,9 +105,9 @@ CREATE TABLE `product` (
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id`, `title`, `description`, `price`, `discount`, `transport`, `image`, `status`) VALUES
-(1, 'test0001', 'test 001\r\n001\r\n\r\n564\r\n\r\n46\r\n\r\ntest', '100.00', 5, '15.00', '', 'active'),
-(2, 'test0002', 'test 001\r\n001\r\n\r\n564\r\n\r\n46\r\n\r\ntest', '250.00', 11, '15.00', '', 'active');
+INSERT INTO `product` (`id`, `category_id`, `title`, `description`, `price`, `discount`, `transport`, `image`, `status`) VALUES
+(1, 0, 'test0001', 'test 001\r\n001\r\n\r\n564\r\n\r\n46\r\n\r\ntest', '100.00', 5, '15.00', '', 'active'),
+(2, 0, 'test0002', 'test 001\r\n001\r\n\r\n564\r\n\r\n46\r\n\r\ntest', '250.00', 11, '15.00', '', 'active');
 
 --
 -- Indexes for dumped tables
