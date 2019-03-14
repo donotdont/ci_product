@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2019 at 12:02 PM
+-- Generation Time: Mar 14, 2019 at 11:34 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -79,6 +79,7 @@ CREATE TABLE `order_product` (
   `id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
+  `attribute` text NOT NULL,
   `price` decimal(10,2) NOT NULL,
   `discount` int(11) NOT NULL,
   `qty` int(5) NOT NULL
@@ -109,6 +110,23 @@ CREATE TABLE `product` (
 INSERT INTO `product` (`id`, `category_id`, `title`, `description`, `price`, `discount`, `transport`, `image`, `status`) VALUES
 (1, 0, 'test0001', 'test 001\r\n001\r\n\r\n564\r\n\r\n46\r\n\r\ntest', '100.00', 5, '15.00', '', 'active'),
 (2, 0, 'test0002', 'test 001\r\n001\r\n\r\n564\r\n\r\n46\r\n\r\ntest', '250.00', 11, '15.00', '', 'active');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_attribute`
+--
+
+CREATE TABLE `product_attribute` (
+  `id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `value` varchar(255) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `discount` int(2) NOT NULL,
+  `transport` decimal(10,2) NOT NULL,
+  `stock` int(5) NOT NULL,
+  `status` enum('active','inactive') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Indexes for dumped tables
@@ -145,6 +163,12 @@ ALTER TABLE `product`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `product_attribute`
+--
+ALTER TABLE `product_attribute`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -177,6 +201,12 @@ ALTER TABLE `order_product`
 --
 ALTER TABLE `product`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `product_attribute`
+--
+ALTER TABLE `product_attribute`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
